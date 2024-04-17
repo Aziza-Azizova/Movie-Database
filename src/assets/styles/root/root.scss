@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    font-family: Raleway;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+textarea,
+input {
+    font-family: Raleway;
+    outline: none;
+}
+
+body {
+    font-family: Raleway;
+    background-color: #141414;
+}
+
+.container {
+    max-width: 1350px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+@mixin media ($size) {
+    @media (max-width: $size) {
+        @content
+    }
+}
