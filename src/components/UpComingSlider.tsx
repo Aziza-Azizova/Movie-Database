@@ -1,15 +1,31 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Btn from './UI/Btn';
-import useUpcoming from '../store/Upcoming';
+import useUpcoming from '../store/upcoming';
+import useApi from '../hooks/useApi';
+import { useAxiosInterceptor } from '../api/ClientApi';
+import Loading from './UI/Loading';
 
 export default function UpComingSlider() {
-    const { upcoming } = useUpcoming();
     const [nextSlide, setNextSlide] = useState(1)
+    
+    const { upcoming, getUpcoming } = useUpcoming();
+    const { loading } = useAxiosInterceptor()
+    const { data, getData } = useApi();
+
+    useEffect(() => {
+        getData('/movie/upcoming')
+    }, [])
+    
+  
+    useEffect(() => {
+      getUpcoming(data);
+    }, [data]);
+
     const line = useRef<HTMLDivElement | null>(null);
     const onAutoplayTimeLeft = (s: any, time: any, progress: any) => {
         if (line.current) {
@@ -25,7 +41,8 @@ export default function UpComingSlider() {
             setNextSlide(swiper.activeIndex + 1)
         }
     }
-
+    
+    if(loading) return <Loading />
     return (
         <>
             <Swiper
@@ -48,7 +65,7 @@ export default function UpComingSlider() {
                             <img src={import.meta.env.VITE_IMG_FULL + film.backdrop_path} className='upcoming__slide-img' alt="" />
                             <h2 className="upcoming__slide-title">{film.title}</h2>
                             <p className="upcoming__slide-text">{film.overview || 'Description not found'}</p>
-                            <Btn />
+                            <Btn type='movie' movieTvId={film.id}/>
                         </SwiperSlide>
                     ))
                 }

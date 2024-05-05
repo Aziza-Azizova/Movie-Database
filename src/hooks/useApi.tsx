@@ -1,21 +1,24 @@
-import axios from "axios";
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import api from "../api/ClientApi";
 
 function useApi() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any>([]);
+  const [page, setPage] = useState<number>(1)
 
-  async function getData() {
-    let { data } = await api.get('/movie/upcoming')
-    setData(data.results)
+  async function getData(url:string) {
+    let { data } = await api.get(url, {
+      params:{
+        page:page
+      }
+    })
+    if(data.results){
+      setData(data.results)
+    } else{
+      setData(data)
+    }
   }
 
-  useEffect(() => {
-    getData()
-  }, [])
-
-
-  return {data}
+  return {data, getData, page, setPage}
 }
 
 export default useApi

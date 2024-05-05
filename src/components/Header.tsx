@@ -21,7 +21,7 @@ function Header() {
                 </li>
               ))
             }
-            <span className={`circle ${active === 0 ? 'active' : active === 1 ? 'move2' : active === 2 ? 'move3' : active === 3 ? 'move4' : ''}`}></span>
+            {/* <span className={`circle ${active === 0 ? 'active' : active === 1 ? 'move2' : active === 2 ? 'move3' : active === 3 ? 'move4' : ''}`}></span> */}
           </ul>
         </div>
       </div>
