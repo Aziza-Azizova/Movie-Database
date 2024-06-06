@@ -1,4 +1,3 @@
-import castImg from '@i/body/Cast.png'
 function Cast({actor}:{actor:IActor}) {
   return (
     <div className='cast'>

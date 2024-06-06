@@ -1,17 +1,19 @@
 import logo from '@i/header/Logo.svg'
+import menuIcon from '@i/header/menu.svg'
 import { router } from '../router'
 import { NavLink } from 'react-router-dom'
 import { useState } from 'react';
 
 function Header() {
   const [active, setActive] = useState(0);
+  const [menu, setMenu] = useState(false);
 
   return (
-    <div className='header'>
+    <div className={`header ${menu ? 'active': ''}`}>
       <div className="container">
         <div className="header__nav">
-          <a href="" className='header_logo'><img src={logo} alt="logo" /></a>
-          <ul className='header__list'>
+          <a href="" className='header__logo'><img src={logo} alt="logo" /></a>
+          <ul className={`header__list ${menu ? 'active': ''}`}>
             {
               router.map((route, index) => (
                 <li key={index}>
@@ -21,8 +23,10 @@ function Header() {
                 </li>
               ))
             }
-            {/* <span className={`circle ${active === 0 ? 'active' : active === 1 ? 'move2' : active === 2 ? 'move3' : active === 3 ? 'move4' : ''}`}></span> */}
           </ul>
+        </div>
+        <div className="header__menu" onClick={() => setMenu(!menu)}>
+          <img src={menuIcon} alt="" />
         </div>
       </div>
     </div>
