@@ -10,7 +10,7 @@ interface IUpcoming {
     overview: string,
     poster_path: string,
     title: string,
-    name:string
+    name: string
 }
 
 interface IUpcomingStore {
@@ -18,7 +18,7 @@ interface IUpcomingStore {
     getUpcoming: (data: IUpcoming[]) => void
 }
 
-interface IMovieTv extends IUpcoming {}
+interface IMovieTv extends IUpcoming { }
 
 interface IMovieTvStore {
     movie: IMovieTv[],
@@ -44,7 +44,8 @@ interface IMovieById extends IUpcoming {
     budget: number,
     release_date: string,
     runtime: number,
-    revenue: number
+    revenue: number,
+    backdrop_path:string
 }
 
 interface IActor {

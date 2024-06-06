@@ -27,7 +27,8 @@ export default function UpComingSlider() {
     }, [data]);
 
     const line = useRef<HTMLDivElement | null>(null);
-    const onAutoplayTimeLeft = (s: any, time: any, progress: any) => {
+    // @ts-ignore
+    const onAutoplayTimeLeft = (s: any, time: any, progress: any) => {       
         if (line.current) {
             line.current.style.width = `${(1 - progress) * 100}%`;
         }

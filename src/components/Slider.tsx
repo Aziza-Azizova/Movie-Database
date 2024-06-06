@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import Infoblocks from './Infoblocks';
 
 
-function Slider({ type }: { type: string }) {
+function Slider({ type }: { type: 'movie' | 'tv'; }) {
     const { data, getData }: { data: IUpcoming[], getData: (url: string) => void } = useApi();
     const { getMovieTv } = useMovieTv();
     const [infoblock, setInfoblock] = useState(false);

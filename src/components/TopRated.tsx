@@ -28,10 +28,7 @@ function TopRated() {
         1600: {
             slidesPerView: 4
         }
-    }
-
-    console.log("data", data);
-    
+    }    
 
     return (
         <div className="toprated">

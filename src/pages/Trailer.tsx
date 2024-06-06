@@ -12,8 +12,6 @@ function Trailer() {
     getData(`/${type}/${id}/videos?language=en-US`)
   }, []);
 
-  // console.log(data);
-
   const onPlayerReady: YouTubeProps['onReady'] = (event) => {    
     event.target.playVideo();
   }

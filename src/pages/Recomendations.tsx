@@ -10,9 +10,6 @@ function Recomendations() {
         getData(`/${type}/${id}/recommendations`)
     }, []);
 
-    console.log("recomended", data);
-
-
     return (
         <div className="recomended">
             <h3 className="recomended__title">Рекомендации</h3>
@@ -21,7 +18,7 @@ function Recomendations() {
                     data.map((movie: any, index: number) => {
                         if (index < 4) {
                             return (
-                                <Link to={`/watch/${type}/${movie.id}`}>
+                                <Link key={index} to={`/watch/${type}/${movie.id}`}>
                                     <img className="recomended__films-img" src={import.meta.env.VITE_IMG + movie.poster_path} alt="" />
                                 </Link>
                             )

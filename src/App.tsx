@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import Header from "./components/Header"
 import { router } from "./router"
-import Footer from "./components/Footer"
 
 function App() {
   return (

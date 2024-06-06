@@ -3,7 +3,10 @@ import api from "../api/ClientApi";
 
 function useApi() {
   const [data, setData] = useState<any>([]);
-  const [page, setPage] = useState<number>(1)
+  const [page, setPage] = useState<number>(1);
+
+  console.log("data", data);
+  
 
   async function getData(url:string) {
     let { data } = await api.get(url, {

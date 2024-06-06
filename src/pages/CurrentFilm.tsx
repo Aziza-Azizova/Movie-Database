@@ -12,9 +12,8 @@ function CurrentFilm() {
     const { getData, data } = useApi()
     let { id, type } = useParams();
     const filmStore = useFilmById();
+    // @ts-ignore
     const film = filmStore[type];
-
-    console.log(film);
 
 
     useEffect(() => {
@@ -42,7 +41,12 @@ function CurrentFilm() {
                                 <li key={index}>{genre.name}</li>
                             ))
                         }
-                        <li>{getRunTime(film.runtime || film.episode_run_time, type)}</li>
+                        <li>
+                            {
+                                // @ts-ignore
+                                getRunTime(film.runtime || film.episode_run_time, type)
+                            }
+                        </li>
                     </ul>
                     <Link to={`/${type}/${film.id}/trailer`} className='btn'> <img src={btnImg} alt="" />Смотерть трейлер</Link>
                 </div>
@@ -59,18 +63,22 @@ function CurrentFilm() {
             </div>
             <div className="currentFilmInfo">
                 <table>
-                    <tr>
-                        <th>Бюджет</th>
-                        <th>Сборы</th>
-                        <th>Статус</th>
-                        <th>Исходное название</th>
-                    </tr>
-                    <tr>
-                        <td>${film.budget}</td>
-                        <td>{film.revenue}</td>
-                        <td>{film.status}</td>
-                        <td>{film.original_title}</td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Бюджет</th>
+                            <th>Сборы</th>
+                            <th>Статус</th>
+                            <th>Исходное название</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>${film.budget}</td>
+                            <td>{film.revenue}</td>
+                            <td>{film.status}</td>
+                            <td>{film.original_title}</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
             <div className="currentFilmRecomendations">

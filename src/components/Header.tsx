@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom'
 import { useState } from 'react';
 
 function Header() {
-  const [active, setActive] = useState(0);
   const [menu, setMenu] = useState(false);
 
   return (
@@ -17,7 +16,7 @@ function Header() {
             {
               router.map((route, index) => (
                 <li key={index}>
-                  <NavLink to={route.path} className="header__link" onClick={() => setActive(index)}>
+                  <NavLink to={route.path} className="header__link">
                     {route.name}
                   </NavLink>
                 </li>

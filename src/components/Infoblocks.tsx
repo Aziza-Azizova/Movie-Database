@@ -4,9 +4,9 @@ import Btn from './UI/Btn';
 import { useEffect } from 'react';
 import useApi from '../hooks/useApi';
 import useFilmById from '../store/filmById';
-import { getRunTime, getYear } from '../store/helper';
+import { getRunTime } from '../store/helper';
 
-function Infoblocks({ active, setInfoblock, movieTvId, type, setId }: { active: boolean, setInfoblock: (x: boolean) => void, movieTvId: number | null, type: string, setId: (value:null) => void }) {
+function Infoblocks({ active, setInfoblock, movieTvId, type, setId }: { active: boolean, setInfoblock: (x: boolean) => void, movieTvId: number | null, type: 'movie' | 'tv', setId: (value:null) => void }) {
     const { data, getData } = useApi()
     const { getMovie } = useFilmById()
 
