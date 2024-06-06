@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import useApi from "../hooks/useApi";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
+import { Link } from "react-router-dom";
 
 
 function TopRated() {
@@ -39,10 +40,10 @@ function TopRated() {
                         if(index < 10) {
                             return (
                                 <SwiperSlide key={index} >
-                                    <div className="toprated__slide">
+                                    <Link to={`/watch/movie/${movie.id}`} className="toprated__slide">
                                         <span className="toprated__slide-num">{index+1}</span>
                                         <img src={import.meta.env.VITE_IMG_FULL + movie.backdrop_path} alt="" className="toprated__img" />
-                                    </div>
+                                    </Link>
                                 </SwiperSlide>
                             )
                         }

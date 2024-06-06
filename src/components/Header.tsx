@@ -16,7 +16,7 @@ function Header() {
             {
               router.map((route, index) => (
                 <li key={index}>
-                  <NavLink to={route.path} className="header__link">
+                  <NavLink to={route.path} className="header__link" onClick={() => setMenu(!menu)}>
                     {route.name}
                   </NavLink>
                 </li>

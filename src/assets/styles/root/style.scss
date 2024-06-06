@@ -157,6 +157,12 @@
         width: 100%;
     }
 
+    @include media (475px) {
+        max-width: 320px;
+        min-width: 320px;
+        width: 100%;
+    }
+
     @include media (376px) {
         max-width: 300px;
         min-width: 300px;
@@ -662,6 +668,13 @@
             padding-right: 30px;
         }
 
+        @include media (475px) {
+            grid-template-columns: repeat(1, 1fr);
+            gap: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
         @include media (376px) {
             grid-template-columns: repeat(1, 1fr);
             gap: 20px;
@@ -1029,11 +1042,29 @@
 }
 
 .trailer {
-    margin: 90px 60px 0 0;
+    margin: 90px 40px 30px 40px;
+
+    @include media(391px){
+        margin: 50px 0 0 0;
+    }
+
+    @include media(475px){
+        margin: 50px 0 0 0;
+    }
+
+    @include media(768px){
+        margin: 90px 0 0 0;
+    }
+
+    @include media(1024px){
+        margin: 90px 0 0 0;
+    }
+
 
     &__video {
         display: flex;
         justify-content: center;
+        align-items: center;
 
         iframe {
             height: 100vh;
